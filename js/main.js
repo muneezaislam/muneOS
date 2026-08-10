@@ -1,0 +1,1 @@
+console.log("MUNE OS loaded successfully ♡");

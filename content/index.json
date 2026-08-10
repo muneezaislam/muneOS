@@ -1,0 +1,35 @@
+[
+  {
+    "id": "stars",
+    "title": "Stars",
+    "description": "A guide to stars, how they form, how they shine and how they die.",
+    "keywords": [
+      "stars",
+      "star",
+      "astronomy",
+      "space",
+      "universe",
+      "sun",
+      "supernova",
+      "nebula",
+      "stellar"
+    ],
+    "file": "articles/stars.html"
+  },
+  {
+    "id":"black-holes",
+    "title":"Black Holes",
+    "description":"A guide to black holes, gravity and what happens beyond the event horizon.",
+    "keywords":[
+      "black holes",
+      "black hole",
+      "space",
+      "astronomy",
+      "gravity",
+      "event horizon",
+      "singularity",
+      "universe"
+    ],
+    "file":"articles/black-holes.html"
+  }
+]

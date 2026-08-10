@@ -1,0 +1,217 @@
+/* MY COMPUTER */
+
+.address-bar{
+border:2px inset #aaa;
+background:white;
+padding:3px 7px;
+}
+
+.explorer h2{
+margin:12px 0;
+color:#775d89;
+}
+
+.file-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+}
+
+.file{
+min-height:95px;
+border:1px solid #a58da8;
+background:#fff7ec;
+color:var(--dark);
+padding:12px;
+text-align:center;
+box-shadow:2px 2px #c1b5c6;
+}
+
+.file:hover{
+background:#fce2ed;
+}
+
+.file b,
+.file small{
+display:block;
+}
+
+.file b{
+margin-top:7px;
+}
+
+.file small{
+color:#92758f;
+}
+
+
+/* NOTEPAD */
+
+.notepad{
+background:#f4eacb;
+padding:20px;
+}
+
+.paper{
+min-height:100%;
+padding:25px;
+background:#fffdf3;
+border-left:3px solid #e3a4b6;
+line-height:1.25;
+}
+
+.paper p:first-child{
+font-family:"Press Start 2P",monospace;
+font-size:13px;
+color:#a65b86;
+}
+.notepad-app{
+height:calc(100% - 30px);
+display:flex;
+flex-direction:column;
+background:#f4eacb;
+}
+
+.notepad-menu{
+height:36px;
+display:flex;
+align-items:center;
+gap:4px;
+padding:4px 6px;
+background:#d8d1d8;
+border-bottom:2px solid #aaa1aa;
+}
+
+.notepad-menu button{
+padding:3px 12px;
+border:2px outset white;
+background:#eee8ef;
+color:#44384b;
+}
+
+.notepad-menu button:active{
+border-style:inset;
+}
+
+#noteEditor{
+flex:1;
+width:100%;
+min-height:0;
+resize:none;
+border:0;
+outline:none;
+padding:18px;
+background:#fffdf3;
+color:#44384b;
+font-family:"VT323",monospace;
+font-size:20px;
+line-height:1.35;
+}
+
+.notepad-status{
+height:25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:2px 8px;
+background:#ddd5df;
+border-top:1px solid #aaa1aa;
+font-size:16px;
+}
+
+
+/* ABOUT */
+
+.about{
+display:flex;
+gap:25px;
+align-items:center;
+background:#f7e8f0;
+}
+
+.avatar{
+min-width:130px;
+height:160px;
+display:grid;
+place-items:center;
+font-size:65px;
+color:#bd6f99;
+background:linear-gradient(
+135deg,
+#f6c5d8,
+#bca7d7
+);
+border:3px ridge #8b718f;
+}
+
+.pink{
+color:#bc5d91;
+}
+
+
+/* MUSIC */
+
+.music{
+text-align:center;
+}
+
+.album{
+width:120px;
+height:120px;
+margin:5px auto 15px;
+display:grid;
+place-items:center;
+background:linear-gradient(
+135deg,
+#e7a8c2,
+#a797cf
+);
+border:4px ridge #8d7a92;
+font-size:60px;
+}
+
+.player-buttons{
+margin:20px;
+color:#9d5d88;
+}
+
+
+/* GAMES */
+
+.games{
+text-align:center;
+}
+
+
+/* MAIL */
+
+.mail{
+text-align:center;
+}
+
+.mail textarea{
+width:90%;
+height:100px;
+margin:10px;
+padding:8px;
+border:2px inset #aaa;
+resize:none;
+}
+
+
+/* SHARED APP BUTTON */
+
+.retro-button{
+border:2px outset #eee;
+background:#e8c1d4;
+padding:6px 16px;
+color:#543e54;
+}
+
+.retro-button:hover{
+background:#dcb6ce;
+}
+
+.retro-button:active{
+border-style:inset;
+}

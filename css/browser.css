@@ -1,0 +1,424 @@
+/* MUNENET WINDOW */
+
+.browser-window{
+width:760px;
+height:560px;
+min-width:500px;
+min-height:350px;
+left:18%;
+top:10%;
+display:flex;
+flex-direction:column;
+}
+
+.browser-window .titlebar{
+flex-shrink:0;
+}
+
+
+/* BROWSER */
+
+.browser{
+padding:0;
+background:#faf6ed;
+flex:1;
+min-height:0;
+display:flex;
+flex-direction:column;
+}
+
+
+/* TOOLBAR */
+
+.browser-toolbar{
+height:38px;
+flex-shrink:0;
+display:flex;
+align-items:center;
+gap:4px;
+padding:5px;
+background:#d9d2db;
+border-bottom:2px solid #9c91a2;
+}
+
+.browser-control{
+width:28px;
+height:27px;
+padding:0;
+border:2px outset white;
+background:#e8e4e8;
+color:#44384b;
+line-height:20px;
+}
+
+.browser-control:active{
+border-style:inset;
+}
+
+.browser-control:disabled{
+color:#999;
+opacity:.55;
+cursor:default;
+}
+
+.browser-address{
+flex:1;
+height:27px;
+display:flex;
+align-items:center;
+background:white;
+border:2px inset #aaa;
+overflow:hidden;
+}
+
+.browser-address span{
+padding-left:6px;
+color:#777;
+font-size:16px;
+white-space:nowrap;
+}
+
+.browser-address input{
+flex:1;
+min-width:0;
+height:22px;
+border:0;
+outline:0;
+padding:1px 6px;
+background:transparent;
+color:#44384b;
+}
+
+.go-button{
+height:27px;
+border:2px outset white;
+background:#eee8ef;
+padding:0 8px;
+}
+
+
+/* SEARCH BAR */
+
+.browser-search-bar{
+height:40px;
+flex-shrink:0;
+display:flex;
+align-items:center;
+gap:6px;
+padding:6px 8px;
+background:#eee9ee;
+border-bottom:1px solid #b7aeb9;
+}
+
+.browser-search-bar input{
+flex:1;
+min-width:0;
+height:28px;
+border:2px inset #aaa;
+background:white;
+padding:3px 8px;
+outline:none;
+}
+
+.browser-search-bar button{
+height:28px;
+border:2px outset white;
+background:#e8c1d4;
+color:#543e54;
+padding:0 12px;
+}
+
+
+/* BROWSER CONTENT */
+
+.browser-content{
+flex:1;
+min-width:0;
+min-height:0;
+overflow:auto;
+background:#faf6ed;
+}
+
+
+/* MUNENET HOME */
+
+.browser-home{
+min-height:100%;
+padding:55px 30px;
+text-align:center;
+}
+
+.logo{
+font-family:"Press Start 2P",monospace;
+font-size:clamp(24px,4vw,42px);
+color:#8c669c;
+text-shadow:3px 3px #efb3c9;
+}
+
+.logo span{
+color:#c46d99;
+}
+
+.tagline{
+color:#8c718d;
+}
+
+.search-big{
+max-width:500px;
+margin:30px auto 18px;
+display:flex;
+background:white;
+border:3px double #9c7e9e;
+}
+
+.search-big input{
+flex:1;
+border:0;
+outline:0;
+padding:9px;
+background:transparent;
+}
+
+.search-big button{
+border:0;
+background:#efc0d3;
+padding:0 12px;
+}
+
+.search-page{
+width:100%;
+max-width:760px;
+margin:0;
+padding:25px 35px 50px;
+text-align:left;
+}
+
+.search-query{
+font-size:17px;
+color:#776b79;
+padding-bottom:15px;
+border-bottom:1px solid #d1c5ce;
+margin-bottom:8px;
+}
+
+.results-list{
+width:100%;
+}
+
+.search-result{
+padding:15px 0 17px;
+border-bottom:1px dotted #c7b7c4;
+}
+
+.search-result-title{
+display:block;
+width:max-content;
+max-width:100%;
+font-family:Arial,sans-serif;
+font-size:20px;
+line-height:24px;
+color:#725b9b;
+text-decoration:none;
+cursor:pointer;
+}
+
+.search-result-title:hover{
+text-decoration:underline;
+}
+
+.search-result-url{
+margin-top:3px;
+font-family:Arial,sans-serif;
+font-size:12px;
+color:#718b67;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.search-result-description{
+margin:4px 0 6px;
+max-width:650px;
+font-family:Arial,sans-serif;
+font-size:13px;
+line-height:19px;
+color:#55505a;
+}
+
+.search-result-open{
+font-family:"VT323",monospace;
+font-size:16px;
+color:#a25784;
+text-decoration:none;
+cursor:pointer;
+}
+
+.search-result-open:hover{
+text-decoration:underline;
+}
+
+.no-results{
+padding:20px 0;
+font-family:Arial,sans-serif;
+font-size:14px;
+color:#55505a;
+}
+/* QUICK LINKS */
+
+.fake-links a{
+margin:0 8px;
+color:#9b5682;
+}
+
+.fake-links a:hover{
+color:#c14c88;
+}
+
+.home-message{
+margin:35px auto;
+max-width:500px;
+padding:15px;
+border:1px dashed #aa86a4;
+background:#fff9ed;
+}
+
+
+/* SEARCH RESULTS */
+
+.search-results-page{
+padding:30px 40px 50px;
+min-height:100%;
+background:#faf6ed;
+}
+
+.search-results-header{
+max-width:680px;
+margin:0 auto 25px;
+padding-bottom:15px;
+border-bottom:1px dotted #aa86a4;
+}
+
+.search-results-header p{
+margin:15px 0 3px;
+color:#6e5b73;
+}
+
+.search-results-header small{
+color:#a48da5;
+}
+
+.search-results{
+max-width:680px;
+margin:0 auto;
+text-align:left;
+}
+
+.search-heading{
+text-align:center;
+color:#80618e;
+margin-bottom:25px;
+}
+
+.result{
+margin:0;
+padding:18px 5px 20px;
+border:0;
+border-bottom:1px dotted #b69ab3;
+background:transparent;
+box-shadow:none;
+}
+
+.result:hover{
+background:rgba(232,193,212,.12);
+}
+
+.result-title{
+display:block;
+font-size:25px;
+color:#76549a;
+text-decoration:none;
+margin-bottom:2px;
+}
+
+.result-title:hover{
+color:#c14c88;
+text-decoration:underline;
+}
+
+.result-url{
+font-family:"VT323",monospace;
+font-size:17px;
+color:#6e8a70;
+margin-bottom:4px;
+}
+
+.result p{
+margin:4px 0 8px;
+color:#665b68;
+line-height:1.1;
+}
+
+.result-link{
+font-size:18px;
+color:#a25784;
+text-decoration:none;
+cursor:pointer;
+}
+
+.result-link:hover{
+text-decoration:underline;
+}
+
+
+/* MUNENET PAGES */
+
+.site-page{
+max-width:650px;
+margin:0 auto;
+padding:30px;
+text-align:left;
+}
+
+.site-page-header{
+background:#e8c1d4;
+border:2px solid #8d718f;
+padding:8px 12px;
+color:#5b405b;
+margin-bottom:20px;
+}
+
+.site-page h1{
+color:#80618e;
+margin-top:0;
+}
+
+.site-page h2{
+color:#a15b85;
+}
+
+.page-back{
+display:inline-block;
+margin-top:20px;
+padding:5px 10px;
+border:2px outset white;
+background:#e8c1d4;
+color:#543e54;
+text-decoration:none;
+}
+
+.page-back:hover{
+background:#dcb6ce;
+}
+
+
+/* RESPONSIVE BROWSER */
+
+@media(max-width:800px){
+
+.browser-window{
+left:12%;
+width:82vw;
+height:70vh;
+}
+
+}

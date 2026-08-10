@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>MUNE OS</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/os.css">
+<link rel="stylesheet" href="css/browser.css">
+<link rel="stylesheet" href="css/apps.css">
 </head>
 <body>
 <main class="desktop">
@@ -27,7 +30,13 @@
 </div>
 
 <section class="app-window hidden" id="window-computer" data-title="My Computer">
-<header class="titlebar"><span>🖥️ My Computer</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
+<header class="titlebar">
+<span>🖥️ My Computer</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
 <div class="window-body explorer">
 <div class="address-bar">C:\Users\Mune\</div>
 <h2>My Computer</h2>
@@ -43,45 +52,87 @@
 </section>
 
 <section class="app-window browser-window hidden" id="window-browser" data-title="MuneNet">
-<header class="titlebar"><span>🌐 MuneNet Explorer</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
+<header class="titlebar">
+<span>🌐 MuneNet Explorer</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
+
 <div class="browser-toolbar">
 <button id="backButton" class="browser-control" title="Back">◀</button>
 <button id="forwardButton" class="browser-control" title="Forward">▶</button>
 <button id="refreshButton" class="browser-control" title="Refresh">↻</button>
-<div class="browser-address"><span>Address:</span><input id="addressInput" value="http://munenet.local/" autocomplete="off"></div>
+
+<div class="browser-address">
+<span>Address:</span>
+<input id="addressInput" value="http://munenet.local/" autocomplete="off">
+</div>
+
 <button id="goButton" class="go-button">Go</button>
 </div>
+
 <div class="browser-search-bar">
 <span>🔎</span>
 <input id="searchInput" type="search" placeholder="Search MuneNet..." autocomplete="off">
 <button id="searchButton">Search</button>
 </div>
+
 <div class="browser-content" id="browserContent"></div>
 </section>
 
 <section class="app-window hidden" id="window-notepad" data-title="Notepad">
-<header class="titlebar"><span>📝 MunePad — blog.txt</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
-<div class="window-body notepad">
-<div class="paper">
-<p>HELLO, INTERNET! ♡</p>
-<p>This is the beginning of my little retro web world.</p>
-<p>Eventually this computer will contain my blog posts, projects, notes, favourite things and random discoveries.</p>
-<p>Think of each file as a tiny piece of my world...</p>
-<p>— Mune</p>
+<header class="titlebar">
+<span>📝 MunePad — notes.txt</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
+<div class="notepad-app">
+<div class="notepad-menu">
+<button id="newNoteButton">New</button>
+<button id="saveNoteButton">Save</button>
+<button id="downloadNoteButton">Download</button>
+</div>
+<textarea id="noteEditor" placeholder="Start typing your notes here..."></textarea>
+<div class="notepad-status">
+<span id="noteStatus">Ready ♡</span>
+<span id="noteCount">0 characters</span>
 </div>
 </div>
 </section>
 
 <section class="app-window hidden" id="window-about" data-title="About Mune">
-<header class="titlebar"><span>🎀 About Mune.exe</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
+<header class="titlebar">
+<span>🎀 About Mune.exe</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
+
 <div class="window-body about">
 <div class="avatar">♡</div>
-<div><h2>Hi! I'm Mune ♡</h2><p>Welcome to my retro little computer.</p><p>This space is going to become my personal blog, portfolio and digital scrapbook.</p><p class="pink">SYSTEM STATUS: online ✦</p></div>
+<div>
+<h2>Hi! I'm Mune ♡</h2>
+<p>Welcome to my retro little computer.</p>
+<p>This space is going to become my personal blog, portfolio and digital scrapbook.</p>
+<p class="pink">SYSTEM STATUS: online ✦</p>
+</div>
 </div>
 </section>
 
 <section class="app-window small hidden" id="window-music" data-title="Music">
-<header class="titlebar"><span>🎵 MunePlayer</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
+<header class="titlebar">
+<span>🎵 MunePlayer</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
+
 <div class="window-body music">
 <div class="album">♪</div>
 <h3>MY LITTLE PLAYLIST</h3>
@@ -93,7 +144,14 @@
 </section>
 
 <section class="app-window small hidden" id="window-games" data-title="Games">
-<header class="titlebar"><span>🕹️ Games</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
+<header class="titlebar">
+<span>🕹️ Games</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
+
 <div class="window-body games">
 <h2>GAME ROOM</h2>
 <p>♡ tiny games coming soon ♡</p>
@@ -102,7 +160,14 @@
 </section>
 
 <section class="app-window small hidden" id="window-mail" data-title="Mail">
-<header class="titlebar"><span>💌 MuneMail</span><div class="window-controls"><button class="minimize">_</button><button class="close">×</button></div></header>
+<header class="titlebar">
+<span>💌 MuneMail</span>
+<div class="window-controls">
+<button class="minimize">_</button>
+<button class="close">×</button>
+</div>
+</header>
+
 <div class="window-body mail">
 <h2>You've got mail! ♡</h2>
 <p>Eventually visitors will be able to leave a message here.</p>
@@ -114,11 +179,19 @@
 <footer class="taskbar">
 <button class="start-button" id="startButton">♡ START</button>
 <div class="task-buttons" id="taskButtons"></div>
-<div class="system-tray"><span>🔊</span><span>🌸</span><span id="clock">12:00 PM</span></div>
+<div class="system-tray">
+<span>🔊</span>
+<span>🌸</span>
+<span id="clock">12:00 PM</span>
+</div>
 </footer>
 
 <div class="start-menu hidden" id="startMenu">
-<div class="start-banner">MUNE<br><span>OS</span></div>
+<div class="start-banner">
+MUNE<br>
+<span>OS</span>
+</div>
+
 <div class="start-items">
 <button data-window="computer">🖥️ My Computer</button>
 <button data-window="browser">🌐 MuneNet</button>
@@ -127,22 +200,34 @@
 <button data-window="music">🎵 Music</button>
 <button data-window="games">🕹️ Games</button>
 </div>
-<div class="shutdown" id="shutdownButton">♡ Shut Down</div></div>
-<div class="shutdown-screen hidden" id="shutdownScreen">
-    <div class="shutdown-box">
-        <div class="shutdown-logo">MUNE<span>OS</span></div>
-        <div class="shutdown-message" id="shutdownMessage">
-            Shutting down...
-        </div>
-        <div class="shutdown-progress">
-            <div class="shutdown-progress-bar" id="shutdownProgressBar"></div>
-        </div>
-        <div class="shutdown-small">
-            Please wait...
-        </div>
-    </div>
+
+<div class="shutdown" id="shutdownButton">♡ Shut Down</div>
 </div>
+
+<div class="shutdown-screen hidden" id="shutdownScreen">
+<div class="shutdown-box">
+<div class="shutdown-logo">MUNE<span>OS</span></div>
+
+<div class="shutdown-message" id="shutdownMessage">
+Shutting down...
+</div>
+
+<div class="shutdown-progress">
+<div class="shutdown-progress-bar" id="shutdownProgressBar"></div>
+</div>
+
+<div class="shutdown-small">
+Please wait...
+</div>
+</div>
+</div>
+
 </main>
-<script src="script.js"></script>
-</body>
+
+<script src="content/pages.js"></script>
+<script src="js/search.js"></script>
+<script src="js/browser.js"></script>
+<script src="js/os.js"></script>
+<script src="js/main.js"></script>
+
 </html>
