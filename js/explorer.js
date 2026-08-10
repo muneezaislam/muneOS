@@ -1,162 +1,169 @@
-let explorerFolder="computer";
-let explorerHistory=["computer"];
-let explorerHistoryIndex=0;
+/* =========================
+   MUNE OS FILE EXPLORER
+========================= */
 
+const documentsFolder=document.getElementById("documentsFolder");
+const documentsFileGrid=document.getElementById("documentsFileGrid");
 const explorerGrid=document.getElementById("explorerGrid");
 const explorerTitle=document.getElementById("explorerTitle");
 const explorerSubtitle=document.getElementById("explorerSubtitle");
 const explorerItemCount=document.getElementById("explorerItemCount");
-const explorerAddress=document.getElementById("explorerAddress");
-const documentsFileGrid=document.getElementById("documentsFileGrid");
 const documentsCount=document.getElementById("documentsCount");
 
-function showWindow(name){
-if(typeof openWindow==="function"){
-openWindow(name);
+function bringWindowForward(win){
+if(!win)return;
+win.classList.remove("hidden");
+if(typeof zIndex!=="undefined"){
+zIndex++;
+win.style.zIndex=zIndex;
+}
+if(typeof refreshTasks==="function")refreshTasks();
+}
+
+function openComputer(){
+const win=document.getElementById("window-computer");
+bringWindowForward(win);
+}
+
+function openDocuments(){
+renderDocuments();
+const win=document.getElementById("window-documents");
+bringWindowForward(win);
+}
+
+function openExplorerWindow(name){
+const win=document.getElementById("window-"+name);
+if(win)bringWindowForward(win);
+}
+
+function renderDocuments(){
+if(!documentsFileGrid)return;
+
+const files=typeof listFiles==="function"?listFiles("Documents"):[];
+
+if(documentsCount){
+documentsCount.textContent=`${files.length} item${files.length===1?"":"s"}`;
+}
+
+if(!files.length){
+documentsFileGrid.innerHTML=`<div class="home-message">No files yet ♡<br>Create a note in MunePad and it will appear here.</div>`;
 return;
 }
 
-const win=document.getElementById("window-"+name);
+documentsFileGrid.innerHTML=files.map(file=>{
+const safeName=escapeFileName(file.name);
+return `<div class="document-file-wrap"><button class="file document-file" data-file="${safeName}"><span class="icon-art">📝</span><b>${safeName}</b><small>text document</small></button><button class="document-delete" data-delete="${safeName}" title="Delete file">×</button></div>`;
+}).join("");
 
-if(win){
-win.classList.remove("hidden");
-}
+documentsFileGrid.querySelectorAll(".document-file").forEach(button=>{
+button.addEventListener("dblclick",()=>{
+openDocumentFile(button.dataset.file);
+});
+});
+
+documentsFileGrid.querySelectorAll(".document-delete").forEach(button=>{
+button.addEventListener("click",event=>{
+event.stopPropagation();
+
+const fileName=button.dataset.delete;
+
+const confirmed=confirm(`Delete "${fileName}"?\n\nThis cannot be undone.`);
+
+if(!confirmed)return;
+
+if(typeof deleteFile!=="function"){
+alert("MUNE OS filesystem is not loaded.");
+return;
 }
 
-function setActiveFolder(folder){
-document.querySelectorAll(".explorer-place").forEach(button=>{
-button.classList.toggle(
-"active",
-button.dataset.folder===folder
-);
+const deleted=deleteFile("Documents",fileName);
+
+if(!deleted){
+alert("MUNE OS could not delete this file.");
+return;
+}
+
+if(typeof currentNoteFile!=="undefined"&&currentNoteFile===fileName){
+currentNoteFile=null;
+
+if(typeof noteEditor!=="undefined"&&noteEditor){
+noteEditor.value="";
+}
+
+if(typeof updateTitle==="function")updateTitle();
+if(typeof updateNoteCount==="function")updateNoteCount();
+if(typeof setNoteStatus==="function")setNoteStatus("File deleted ♡");
+}
+
+renderDocuments();
+});
 });
 }
 
-function escapeHTML(text){
-return String(text).replace(
-/[&<>"']/g,
-char=>({
+function escapeFileName(name){
+return String(name).replace(/[&<>"']/g,char=>({
 "&":"&amp;",
 "<":"&lt;",
 ">":"&gt;",
 '"':"&quot;",
 "'":"&#039;"
-}[char])
-);
+}[char]));
 }
 
-function renderComputer(){
-
-if(!explorerGrid)return;
-
-explorerFolder="computer";
-
-explorerTitle.textContent="My Computer";
-explorerSubtitle.textContent="Choose a place to explore.";
-
-if(explorerAddress){
-explorerAddress.textContent="C:\\Users\\Mune\\";
-}
-
-explorerItemCount.textContent="6 items";
-
-explorerGrid.innerHTML=`
-<button class="explorer-item" data-explorer-window="about" type="button">
-<div class="explorer-icon">🎀</div>
-<strong>About Me</strong>
-<small>personal</small>
-</button>
-
-<button class="explorer-item" data-explorer-folder="Documents" type="button">
-<div class="explorer-icon">📁</div>
-<strong>Documents</strong>
-<small>your files</small>
-</button>
-
-<button class="explorer-item" data-explorer-window="browser" type="button">
-<div class="explorer-icon">🌐</div>
-<strong>Internet</strong>
-<small>MuneNet</small>
-</button>
-
-<button class="explorer-item" data-explorer-window="games" type="button">
-<div class="explorer-icon">🕹️</div>
-<strong>Games</strong>
-<small>javascript</small>
-</button>
-
-<button class="explorer-item" data-explorer-window="music" type="button">
-<div class="explorer-icon">🎵</div>
-<strong>Music</strong>
-<small>playlist</small>
-</button>
-
-<button class="explorer-item" data-explorer-window="mail" type="button">
-<div class="explorer-icon">💌</div>
-<strong>Mail</strong>
-<small>contact</small>
-</button>
-`;
-
-setActiveFolder("computer");
-}
-
-function renderDocuments(){
-
-if(!documentsFileGrid)return;
-
-const files=listFiles("Documents");
-
-if(documentsCount){
-documentsCount.textContent=
-`${files.length} item${files.length===1?"":"s"}`;
-}
-
-if(files.length===0){
-
-documentsFileGrid.innerHTML=`
-<div class="empty-documents">
-<div class="empty-icon">📁</div>
-<strong>Your Documents folder is empty</strong>
-<span>Save a MunePad document and it will appear here.</span>
-</div>
-`;
-
+function openDocumentFile(fileName){
+if(typeof openNoteFile!=="function"){
+console.error("MunePad has not loaded.");
 return;
 }
 
-documentsFileGrid.innerHTML=files.map(file=>`
-<button
-class="explorer-item document-file"
-data-file-name="${encodeURIComponent(file.name)}"
-type="button"
->
-<div class="explorer-icon">📝</div>
-<strong>${escapeHTML(file.name)}</strong>
-<small>text document</small>
-</button>
-`).join("");
-}
+openNoteFile(fileName);
 
-function openDocuments(){
+const notepadWindow=document.getElementById("window-notepad");
 
-renderDocuments();
-
-if(typeof openWindow==="function"){
-openWindow("documents");
-}else{
-const win=document.getElementById("window-documents");
-
-if(win){
-win.classList.remove("hidden");
-}
+if(notepadWindow){
+bringWindowForward(notepadWindow);
 }
 }
 
-function openFolder(folder){
+/* =========================
+   MY COMPUTER EXPLORER ITEMS
+========================= */
 
-if(folder==="computer"){
-renderComputer();
+if(explorerGrid){
+explorerGrid.querySelectorAll("[data-explorer-window]").forEach(item=>{
+item.addEventListener("dblclick",()=>{
+const name=item.dataset.explorerWindow;
+openExplorerWindow(name);
+});
+});
+
+explorerGrid.querySelectorAll("[data-explorer-folder]").forEach(item=>{
+item.addEventListener("dblclick",()=>{
+const folder=item.dataset.explorerFolder;
+
+if(folder==="Documents"){
+openDocuments();
+}
+});
+});
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+document.querySelectorAll(".explorer-place").forEach(place=>{
+place.addEventListener("click",()=>{
+const folder=place.dataset.folder;
+
+document.querySelectorAll(".explorer-place").forEach(item=>{
+item.classList.remove("active");
+});
+
+place.classList.add("active");
+
+if(folder==="computer"||!folder){
+openComputer();
 return;
 }
 
@@ -165,250 +172,92 @@ openDocuments();
 return;
 }
 
-explorerFolder=folder;
-
-explorerTitle.textContent=folder;
-explorerSubtitle.textContent=
-`Your ${folder.toLowerCase()} folder.`;
-
-if(explorerAddress){
-explorerAddress.textContent=
-`C:\\Users\\Mune\\${folder}\\`;
-}
-
-const files=listFiles(folder);
-
-explorerItemCount.textContent=
-`${files.length} item${files.length===1?"":"s"}`;
-
-if(files.length===0){
-
-explorerGrid.innerHTML=`
-<div class="empty-documents">
-<div class="empty-icon">♡</div>
-<strong>This folder is empty</strong>
-<span>Nothing has been saved here yet.</span>
-</div>
-`;
-
-}else{
-
-explorerGrid.innerHTML=files.map(file=>`
-<button class="explorer-item document-file" data-file-name="${encodeURIComponent(file.name)}" type="button">
-<div class="explorer-icon">📄</div>
-<strong>${escapeHTML(file.name)}</strong>
-<small>file</small>
-</button>
-`).join("");
-}
-
-setActiveFolder(folder);
-}
-
-function navigate(folder){
-
-if(
-explorerHistory[explorerHistory.length-1]!==folder
-){
-
-explorerHistory=
-explorerHistory.slice(
-0,
-explorerHistoryIndex+1
-);
-
-explorerHistory.push(folder);
-
-explorerHistoryIndex++;
-}
-
-openFolder(folder);
-}
-
-function goBack(){
-
-if(explorerHistoryIndex<=0){
+if(folder==="Music"){
+openExplorerWindow("music");
 return;
 }
 
-explorerHistoryIndex--;
-
-openFolder(
-explorerHistory[explorerHistoryIndex]
-);
-}
-
-function goForward(){
-
-if(
-explorerHistoryIndex>=
-explorerHistory.length-1
-){
+if(folder==="Games"){
+openExplorerWindow("games");
 return;
-}
-
-explorerHistoryIndex++;
-
-openFolder(
-explorerHistory[explorerHistoryIndex]
-);
-}
-
-function goUp(){
-
-if(explorerFolder!=="computer"){
-navigate("computer");
-}
-}
-
-document.addEventListener("click",event=>{
-
-const folderButton=
-event.target.closest(
-"[data-explorer-folder]"
-);
-
-if(folderButton){
-navigate(
-folderButton.dataset.explorerFolder
-);
-return;
-}
-
-const appButton=
-event.target.closest(
-"[data-explorer-window]"
-);
-
-if(appButton){
-showWindow(
-appButton.dataset.explorerWindow
-);
-return;
-}
-
-const fileButton=
-event.target.closest(
-".document-file"
-);
-
-if(fileButton){
-
-const fileName=
-decodeURIComponent(
-fileButton.dataset.fileName
-);
-
-if(typeof openNoteFile==="function"){
-openNoteFile(fileName);
-}
-
-return;
-}
-
-const place=
-event.target.closest(
-".explorer-place[data-folder]"
-);
-
-if(place){
-
-navigate(
-place.dataset.folder
-);
-
 }
 });
+});
 
-document.getElementById(
-"explorerBack"
-)?.addEventListener(
-"click",
-goBack
-);
+/* =========================
+   DOCUMENTS SIDEBAR
+========================= */
 
-document.getElementById(
-"explorerForward"
-)?.addEventListener(
-"click",
-goForward
-);
+const documentsComputer=document.getElementById("documentsComputer");
 
-document.getElementById(
-"explorerUp"
-)?.addEventListener(
-"click",
-goUp
-);
-
-document.getElementById(
-"documentsBack"
-)?.addEventListener(
-"click",
-()=>{
-const win=
-document.getElementById(
-"window-documents"
-);
-
-if(win)win.classList.add("hidden");
+if(documentsComputer){
+documentsComputer.addEventListener("click",()=>{
+openComputer();
+});
 }
-);
 
-document.getElementById(
-"documentsUp"
-)?.addEventListener(
-"click",
-()=>{
-const win=
-document.getElementById(
-"window-documents"
-);
+/* =========================
+   DOCUMENTS FOLDER
+========================= */
 
-if(win)win.classList.add("hidden");
-
-showWindow("computer");
-renderComputer();
+if(documentsFolder){
+documentsFolder.addEventListener("click",event=>{
+event.stopPropagation();
+openDocuments();
+});
 }
-);
 
-document.getElementById(
-"documentsComputer"
-)?.addEventListener(
-"click",
-()=>{
-const win=
-document.getElementById(
-"window-documents"
-);
+/* =========================
+   BACK / UP BUTTONS
+========================= */
 
-if(win)win.classList.add("hidden");
+const explorerBack=document.getElementById("explorerBack");
+const explorerForward=document.getElementById("explorerForward");
+const explorerUp=document.getElementById("explorerUp");
+const documentsBack=document.getElementById("documentsBack");
+const documentsUp=document.getElementById("documentsUp");
 
-showWindow("computer");
-renderComputer();
+if(explorerBack){
+explorerBack.addEventListener("click",()=>{
+openComputer();
+});
 }
-);
 
-document.addEventListener(
-"dblclick",
-event=>{
-const file=
-event.target.closest(
-".document-file"
-);
-
-if(!file)return;
-
-const fileName=
-decodeURIComponent(
-file.dataset.fileName
-);
-
-if(typeof openNoteFile==="function"){
-openNoteFile(fileName);
+if(explorerForward){
+explorerForward.addEventListener("click",()=>{
+openComputer();
+});
 }
-}
-);
 
-renderComputer();
-renderDocuments();
+if(explorerUp){
+explorerUp.addEventListener("click",()=>{
+openComputer();
+});
+}
+
+if(documentsBack){
+documentsBack.addEventListener("click",()=>{
+openComputer();
+});
+}
+
+if(documentsUp){
+documentsUp.addEventListener("click",()=>{
+openComputer();
+});
+}
+
+/* =========================
+   UPDATE COMPUTER COUNTER
+========================= */
+
+function updateExplorerCounter(){
+if(!explorerItemCount)return;
+
+const items=explorerGrid?
+explorerGrid.querySelectorAll(".explorer-item").length:0;
+
+explorerItemCount.textContent=`${items} items`;
+}
+
+updateExplorerCounter();
