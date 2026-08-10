@@ -7,6 +7,19 @@ document.querySelectorAll(".app-window").forEach(win=>{
 const taskButtons=document.getElementById("taskButtons");
 const startMenu=document.getElementById("startMenu");
 const startButton=document.getElementById("startButton");
+const shutdownButton=document.getElementById("shutdownButton");
+const shutdownScreen=document.getElementById("shutdownScreen");
+const shutdownProgressBar=document.getElementById("shutdownProgressBar");
+const shutdownMessage=document.getElementById("shutdownMessage");
+const browserContent=document.getElementById("browserContent");
+const searchInput=document.getElementById("searchInput");
+const searchButton=document.getElementById("searchButton");
+const addressInput=document.getElementById("addressInput");
+const goButton=document.getElementById("goButton");
+const backButton=document.getElementById("backButton");
+const forwardButton=document.getElementById("forwardButton");
+const refreshButton=document.getElementById("refreshButton");
+
 let zIndex=20;
 
 function openWindow(name){
@@ -156,15 +169,6 @@ const pages={
 let browserHistory=[];
 let browserHistoryIndex=-1;
 let browserInitialised=false;
-
-const browserContent=document.getElementById("browserContent");
-const searchInput=document.getElementById("searchInput");
-const searchButton=document.getElementById("searchButton");
-const addressInput=document.getElementById("addressInput");
-const goButton=document.getElementById("goButton");
-const backButton=document.getElementById("backButton");
-const forwardButton=document.getElementById("forwardButton");
-const refreshButton=document.getElementById("refreshButton");
 
 function escapeHTML(text){
     return text.replace(/[&<>"']/g,char=>({
@@ -415,3 +419,52 @@ function updateClock(){
 updateClock();
 setInterval(updateClock,30000);
 refreshTasks();
+
+shutdownButton.addEventListener("click",()=>{
+    startShutdown();
+});
+
+function startShutdown(){
+
+    startMenu.classList.add("hidden");
+
+    shutdownScreen.classList.remove("hidden");
+
+    shutdownProgressBar.style.width="0%";
+
+    shutdownMessage.textContent="Shutting down...";
+
+    let progress=0;
+
+    const shutdownTimer=setInterval(()=>{
+
+        progress+=5;
+
+        shutdownProgressBar.style.width=progress+"%";
+
+        if(progress>=100){
+
+            clearInterval(shutdownTimer);
+
+            shutdownMessage.textContent="It is now safe to close this window.";
+
+            setTimeout(()=>{
+                shutdownScreen.style.background="#050407";
+                shutdownScreen.innerHTML=`
+                    <div class="shutdown-box">
+                        <div class="shutdown-logo">MUNE<span>OS</span></div>
+                        <div class="shutdown-message">
+                            ♡ Goodbye ♡
+                        </div>
+                        <div class="shutdown-small">
+                            It is now safe to close this window.
+                        </div>
+                    </div>
+                `;
+            },500);
+
+        }
+
+    },100);
+
+}

@@ -127,7 +127,20 @@
 <button data-window="music">🎵 Music</button>
 <button data-window="games">🕹️ Games</button>
 </div>
-<div class="shutdown">♡ Shut Down</div>
+<div class="shutdown" id="shutdownButton">♡ Shut Down</div></div>
+<div class="shutdown-screen hidden" id="shutdownScreen">
+    <div class="shutdown-box">
+        <div class="shutdown-logo">MUNE<span>OS</span></div>
+        <div class="shutdown-message" id="shutdownMessage">
+            Shutting down...
+        </div>
+        <div class="shutdown-progress">
+            <div class="shutdown-progress-bar" id="shutdownProgressBar"></div>
+        </div>
+        <div class="shutdown-small">
+            Please wait...
+        </div>
+    </div>
 </div>
 </main>
 <script src="script.js"></script>
