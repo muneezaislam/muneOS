@@ -1,1233 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>MUNE OS</title>
-
-
-    <!-- =========================
-         MUNE OS STYLES
-    ========================== -->
-
-    <link
-        rel="stylesheet"
-        href="css/main.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/os.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/browser.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/apps.css"
-    >
-
-    <!-- NEW FILE EXPLORER CSS -->
-
-    <link
-        rel="stylesheet"
-        href="css/explorer.css"
-    >
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MUNE OS</title>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/os.css">
+<link rel="stylesheet" href="css/browser.css">
+<link rel="stylesheet" href="css/apps.css">
+<link rel="stylesheet" href="css/explorer.css">
 </head>
-
-
 <body>
-
 <main class="desktop">
-
-    <!-- =========================
-         WALLPAPER
-    ========================== -->
-
-    <div class="wallpaper"></div>
-
-
-    <!-- =========================
-         DESKTOP ICONS
-    ========================== -->
-
-    <section class="desktop-icons">
-
-        <button
-            class="desktop-icon"
-            data-window="computer"
-        >
-
-            <span class="icon-art">
-                📁
-            </span>
-
-            <span>
-                My Computer
-            </span>
-
-        </button>
-
-
-        <button
-            class="desktop-icon"
-            data-window="browser"
-        >
-
-            <span class="icon-art">
-                🌐
-            </span>
-
-            <span>
-                MuneNet
-            </span>
-
-        </button>
-
-
-        <button
-            class="desktop-icon"
-            data-window="notepad"
-        >
-
-            <span class="icon-art">
-                📝
-            </span>
-
-            <span>
-                Notepad
-            </span>
-
-        </button>
-
-
-        <button
-            class="desktop-icon"
-            data-window="about"
-        >
-
-            <span class="icon-art">
-                🎀
-            </span>
-
-            <span>
-                About Mune
-            </span>
-
-        </button>
-
-
-        <button
-            class="desktop-icon"
-            data-window="music"
-        >
-
-            <span class="icon-art">
-                🎵
-            </span>
-
-            <span>
-                Music
-            </span>
-
-        </button>
-
-
-        <button
-            class="desktop-icon"
-            data-window="games"
-        >
-
-            <span class="icon-art">
-                🕹️
-            </span>
-
-            <span>
-                Games
-            </span>
-
-        </button>
-
-
-        <button
-            class="desktop-icon"
-            data-window="mail"
-        >
-
-            <span class="icon-art">
-                💌
-            </span>
-
-            <span>
-                Mail
-            </span>
-
-        </button>
-
-    </section>
-
-
-    <!-- =========================
-         WELCOME NOTE
-    ========================== -->
-
-    <div class="welcome-note">
-
-        <div class="note-title">
-            ♡ MUNE OS ♡
-        </div>
-
-        <p>
-            Welcome to my little corner
-            <br>
-            of the internet.
-        </p>
-
-        <small>
-            click around & explore!
-        </small>
-
-    </div>
-
-
-    <!-- ==================================================
-         MY COMPUTER / FILE EXPLORER
-    ================================================== -->
-
-    <section
-        class="app-window explorer-window hidden"
-        id="window-computer"
-        data-title="My Computer"
-    >
-
-        <!-- TITLE BAR -->
-
-        <header class="titlebar explorer-titlebar">
-
-            <span>
-                🖥️ Exploring - My Computer
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <!-- MENU BAR -->
-
-        <div class="explorer-menubar">
-
-            <button>
-                File
-            </button>
-
-            <button>
-                Edit
-            </button>
-
-            <button>
-                View
-            </button>
-
-            <button>
-                Tools
-            </button>
-
-            <button>
-                Help
-            </button>
-
-        </div>
-
-
-        <!-- TOOLBAR -->
-
-        <div class="explorer-toolbar">
-
-            <button
-                id="explorerBack"
-                title="Back"
-            >
-                ◀
-            </button>
-
-            <button
-                id="explorerForward"
-                title="Forward"
-            >
-                ▶
-            </button>
-
-            <button
-                id="explorerUp"
-                title="Up"
-            >
-                ⬆
-            </button>
-
-
-            <div class="toolbar-separator"></div>
-
-
-            <button
-                id="explorerRefresh"
-                title="Refresh"
-            >
-                🔄
-            </button>
-
-            <button
-                id="explorerNewFolder"
-                title="New Folder"
-            >
-                📁
-            </button>
-
-        </div>
-
-
-        <!-- ADDRESS BAR -->
-
-        <div class="explorer-address-row">
-
-            <span>
-                Address:
-            </span>
-
-
-            <div class="explorer-address">
-
-                <span id="explorerAddress">
-                    My Computer
-                </span>
-
-                <span class="address-arrow">
-                    ▼
-                </span>
-
-            </div>
-
-
-            <button
-                id="explorerGo"
-                class="explorer-go"
-            >
-                Go
-            </button>
-
-        </div>
-
-
-        <!-- =========================
-             EXPLORER MAIN AREA
-        ========================== -->
-
-        <div class="explorer-main">
-
-
-            <!-- =========================
-                 LEFT NAVIGATION
-            ========================== -->
-
-            <aside class="explorer-sidebar">
-
-                <div class="sidebar-title">
-                    All Folders
-                </div>
-
-
-                <div class="tree-view">
-
-
-                    <!-- DESKTOP -->
-
-                    <div class="tree-item tree-parent">
-
-                        <button
-                            class="tree-arrow"
-                            data-tree-toggle="desktop"
-                        >
-                            +
-                        </button>
-
-                        <span class="tree-icon">
-                            🖥️
-                        </span>
-
-                        <span>
-                            Desktop
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="tree-children hidden"
-                        id="tree-desktop"
-                    >
-
-                        <div
-                            class="tree-item"
-                            data-folder="root"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                🖥️
-                            </span>
-
-                            <span>
-                                My Computer
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- MY COMPUTER -->
-
-                    <div class="tree-item tree-parent">
-
-                        <button
-                            class="tree-arrow"
-                            data-tree-toggle="computer"
-                        >
-                            −
-                        </button>
-
-                        <span class="tree-icon">
-                            💻
-                        </span>
-
-                        <span>
-                            My Computer
-                        </span>
-
-                    </div>
-
-
-                    <div
-                        class="tree-children"
-                        id="tree-computer"
-                    >
-
-
-                        <!-- DOCUMENTS -->
-
-                        <div
-                            class="tree-item"
-                            data-folder="Documents"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                📁
-                            </span>
-
-                            <span>
-                                Documents
-                            </span>
-
-                        </div>
-
-
-                        <!-- PICTURES -->
-
-                        <div
-                            class="tree-item"
-                            data-folder="Pictures"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                📁
-                            </span>
-
-                            <span>
-                                Pictures
-                            </span>
-
-                        </div>
-
-
-                        <!-- MUSIC -->
-
-                        <div
-                            class="tree-item"
-                            data-folder="Music"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                📁
-                            </span>
-
-                            <span>
-                                Music
-                            </span>
-
-                        </div>
-
-
-                        <!-- GAMES -->
-
-                        <div
-                            class="tree-item"
-                            data-folder="Games"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                📁
-                            </span>
-
-                            <span>
-                                Games
-                            </span>
-
-                        </div>
-
-
-                        <!-- NETWORK -->
-
-                        <div
-                            class="tree-item"
-                            data-special="network"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                🌐
-                            </span>
-
-                            <span>
-                                Network
-                            </span>
-
-                        </div>
-
-
-                        <!-- RECYCLE BIN -->
-
-                        <div
-                            class="tree-item"
-                            data-special="recycle"
-                        >
-
-                            <span class="tree-spacer"></span>
-
-                            <span class="tree-icon">
-                                🗑️
-                            </span>
-
-                            <span>
-                                Recycle Bin
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- ONLINE SERVICES -->
-
-                    <div class="tree-item">
-
-                        <span class="tree-spacer"></span>
-
-                        <span class="tree-icon">
-                            🌐
-                        </span>
-
-                        <span>
-                            Online Services
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-
-            <!-- DIVIDER -->
-
-            <div class="explorer-divider"></div>
-
-
-            <!-- =========================
-                 RIGHT CONTENT AREA
-            ========================== -->
-
-            <section class="explorer-content">
-
-                <div class="contents-header">
-
-                    <span
-                        id="explorerContentsTitle"
-                    >
-                        Contents of 'My Computer'
-                    </span>
-
-                </div>
-
-
-                <div
-                    class="explorer-file-area"
-                    id="explorerFileArea"
-                ></div>
-
-            </section>
-
-        </div>
-
-
-        <!-- =========================
-             STATUS BAR
-        ========================== -->
-
-        <div class="explorer-statusbar">
-
-            <span id="explorerStatus">
-                4 objects
-            </span>
-
-            <span>
-                MUNE OS
-            </span>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         BROWSER
-    ================================================== -->
-
-    <section
-        class="app-window browser-window hidden"
-        id="window-browser"
-        data-title="MuneNet"
-    >
-
-        <header class="titlebar">
-
-            <span>
-                🌐 MuneNet Explorer
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <div class="browser-toolbar">
-
-            <button
-                id="backButton"
-                class="browser-control"
-                title="Back"
-            >
-                ◀
-            </button>
-
-            <button
-                id="forwardButton"
-                class="browser-control"
-                title="Forward"
-            >
-                ▶
-            </button>
-
-            <button
-                id="refreshButton"
-                class="browser-control"
-                title="Refresh"
-            >
-                ↻
-            </button>
-
-
-            <div class="browser-address">
-
-                <span>
-                    Address:
-                </span>
-
-                <input
-                    id="addressInput"
-                    value="http://munenet.local/"
-                    autocomplete="off"
-                >
-
-            </div>
-
-
-            <button
-                id="goButton"
-                class="go-button"
-            >
-                Go
-            </button>
-
-        </div>
-
-
-        <div class="browser-search-bar">
-
-            <span>
-                🔎
-            </span>
-
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="Search MuneNet..."
-                autocomplete="off"
-            >
-
-            <button id="searchButton">
-                Search
-            </button>
-
-        </div>
-
-
-        <div
-            class="browser-content"
-            id="browserContent"
-        ></div>
-
-    </section>
-
-
-    <!-- ==================================================
-         NOTEPAD
-    ================================================== -->
-
-    <section
-        class="app-window hidden"
-        id="window-notepad"
-        data-title="MunePad"
-    >
-
-        <header class="titlebar">
-
-            <span id="notepadTitle">
-                📝 MunePad — notes.txt
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <div class="notepad-app">
-
-            <div class="notepad-menu">
-
-                <button id="newNoteButton">
-                    New
-                </button>
-
-                <button id="saveNoteButton">
-                    Save
-                </button>
-
-                <button id="downloadNoteButton">
-                    Download
-                </button>
-
-            </div>
-
-
-            <textarea
-                id="noteEditor"
-                placeholder="Start typing your notes here..."
-            ></textarea>
-
-
-            <div class="notepad-status">
-
-                <span id="noteStatus">
-                    Ready ♡
-                </span>
-
-                <span id="noteCount">
-                    0 characters
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         ABOUT MUNE
-    ================================================== -->
-
-    <section
-        class="app-window hidden"
-        id="window-about"
-        data-title="About Mune"
-    >
-
-        <header class="titlebar">
-
-            <span>
-                🎀 About Mune.exe
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <div class="window-body about">
-
-            <div class="avatar">
-                ♡
-            </div>
-
-
-            <div>
-
-                <h2>
-                    Hi! I'm Mune ♡
-                </h2>
-
-                <p>
-                    Welcome to my retro little computer.
-                </p>
-
-                <p>
-                    This space is going to become my
-                    personal blog, portfolio and digital
-                    scrapbook.
-                </p>
-
-                <p class="pink">
-                    SYSTEM STATUS: online ✦
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         MUSIC
-    ================================================== -->
-
-    <section
-        class="app-window small hidden"
-        id="window-music"
-        data-title="Music"
-    >
-
-        <header class="titlebar">
-
-            <span>
-                🎵 MunePlayer
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <div class="window-body music">
-
-            <div class="album">
-                ♪
-            </div>
-
-            <h3>
-                MY LITTLE PLAYLIST
-            </h3>
-
-            <p>
-                01 — your favourite song
-            </p>
-
-            <p>
-                02 — another favourite
-            </p>
-
-            <p>
-                03 — late night coding
-            </p>
-
-            <div class="player-buttons">
-                ◀　▶　▶
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         GAMES
-    ================================================== -->
-
-    <section
-        class="app-window small hidden"
-        id="window-games"
-        data-title="Games"
-    >
-
-        <header class="titlebar">
-
-            <span>
-                🕹️ Games
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <div class="window-body games">
-
-            <h2>
-                GAME ROOM
-            </h2>
-
-            <p>
-                ♡ tiny games coming soon ♡
-            </p>
-
-            <button
-                class="retro-button"
-                onclick="alert('This is where your first game will live!')"
-            >
-                START GAME
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         MAIL
-    ================================================== -->
-
-    <section
-        class="app-window small hidden"
-        id="window-mail"
-        data-title="Mail"
-    >
-
-        <header class="titlebar">
-
-            <span>
-                💌 MuneMail
-            </span>
-
-            <div class="window-controls">
-
-                <button class="minimize">
-                    _
-                </button>
-
-                <button class="close">
-                    ×
-                </button>
-
-            </div>
-
-        </header>
-
-
-        <div class="window-body mail">
-
-            <h2>
-                You've got mail! ♡
-            </h2>
-
-            <p>
-                Eventually visitors will be able
-                to leave a message here.
-            </p>
-
-            <textarea
-                placeholder="Write a message..."
-            ></textarea>
-
-            <button class="retro-button">
-                SEND
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================================================
-         TASKBAR
-    ================================================== -->
-
-    <footer class="taskbar">
-
-        <button
-            class="start-button"
-            id="startButton"
-        >
-            ♡ START
-        </button>
-
-
-        <div
-            class="task-buttons"
-            id="taskButtons"
-        ></div>
-
-
-        <div class="system-tray">
-
-            <span>
-                🔊
-            </span>
-
-            <span>
-                🌸
-            </span>
-
-            <span id="clock">
-                12:00 PM
-            </span>
-
-        </div>
-
-    </footer>
-
-
-    <!-- ==================================================
-         START MENU
-    ================================================== -->
-
-    <div
-        class="start-menu hidden"
-        id="startMenu"
-    >
-
-        <div class="start-banner">
-
-            MUNE
-
-            <br>
-
-            <span>
-                OS
-            </span>
-
-        </div>
-
-
-        <div class="start-items">
-
-            <button data-window="computer">
-                🖥️ My Computer
-            </button>
-
-            <button data-window="browser">
-                🌐 MuneNet
-            </button>
-
-            <button data-window="notepad">
-                📝 MunePad
-            </button>
-
-            <button data-window="about">
-                🎀 About Mune
-            </button>
-
-            <button data-window="music">
-                🎵 Music
-            </button>
-
-            <button data-window="games">
-                🕹️ Games
-            </button>
-
-        </div>
-
-
-        <div
-            class="shutdown"
-            id="shutdownButton"
-        >
-            ♡ Shut Down
-        </div>
-
-    </div>
-
-
-    <!-- ==================================================
-         SHUTDOWN SCREEN
-    ================================================== -->
-
-    <div
-        class="shutdown-screen hidden"
-        id="shutdownScreen"
-    >
-
-        <div class="shutdown-box">
-
-            <div class="shutdown-logo">
-
-                MUNE
-
-                <span>
-                    OS
-                </span>
-
-            </div>
-
-
-            <div
-                class="shutdown-message"
-                id="shutdownMessage"
-            >
-                Shutting down...
-            </div>
-
-
-            <div class="shutdown-progress">
-
-                <div
-                    class="shutdown-progress-bar"
-                    id="shutdownProgressBar"
-                ></div>
-
-            </div>
-
-
-            <div class="shutdown-small">
-                Please wait...
-            </div>
-
-        </div>
-
-    </div>
+<div class="wallpaper"></div>
+
+<section class="desktop-icons">
+<button class="desktop-icon" data-window="computer"><span class="icon-art">📁</span><span>My Computer</span></button>
+<button class="desktop-icon" data-window="browser"><span class="icon-art">🌐</span><span>MuneNet</span></button>
+<button class="desktop-icon" data-window="notepad"><span class="icon-art">📝</span><span>Notepad</span></button>
+<button class="desktop-icon" data-window="about"><span class="icon-art">🎀</span><span>About Mune</span></button>
+<button class="desktop-icon" data-window="music"><span class="icon-art">🎵</span><span>Music</span></button>
+<button class="desktop-icon" data-window="games"><span class="icon-art">🕹️</span><span>Games</span></button>
+<button class="desktop-icon" data-window="mail"><span class="icon-art">💌</span><span>Mail</span></button>
+</section>
+
+<div class="welcome-note">
+<div class="note-title">♡ MUNE OS ♡</div>
+<p>Welcome to my little corner<br>of the internet.</p>
+<small>click around & explore!</small>
+</div>
+
+<!-- MY COMPUTER -->
+<section class="app-window explorer-window hidden" id="window-computer" data-title="My Computer">
+<header class="titlebar">
+<span>🖥️ My Computer</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="explorer">
+<div class="explorer-toolbar">
+<button id="explorerBack" type="button">←</button>
+<button id="explorerForward" type="button">→</button>
+<button id="explorerUp" type="button">↑</button>
+<div class="explorer-address" id="explorerAddress">C:\Users\Mune\</div>
+</div>
+
+<div class="explorer-content">
+<aside class="explorer-sidebar">
+<div class="sidebar-title">Places</div>
+<button class="explorer-place active" data-folder="computer" type="button">🖥️ My Computer</button>
+<button class="explorer-place" data-folder="Documents" type="button">📁 Documents</button>
+<button class="explorer-place" data-folder="Pictures" type="button">🖼️ Pictures</button>
+<button class="explorer-place" data-folder="Music" type="button">🎵 Music</button>
+<button class="explorer-place" data-folder="Games" type="button">🕹️ Games</button>
+
+<div class="sidebar-title system-title">System</div>
+<div class="system-info">♡ MUNE OS</div>
+<div class="system-info online">● Online</div>
+</aside>
+
+<section class="explorer-main">
+<div class="explorer-heading">
+<div>
+<h2 id="explorerTitle">My Computer</h2>
+<p id="explorerSubtitle">Choose a place to explore.</p>
+</div>
+<span id="explorerItemCount">6 items</span>
+</div>
+
+<div class="explorer-grid" id="explorerGrid">
+<button class="explorer-item" data-explorer-window="about" type="button">
+<div class="explorer-icon">🎀</div>
+<strong>About Me</strong>
+<small>personal</small>
+</button>
+
+<button class="explorer-item" data-explorer-folder="Documents" type="button">
+<div class="explorer-icon">📁</div>
+<strong>Documents</strong>
+<small>your files</small>
+</button>
+
+<button class="explorer-item" data-explorer-window="browser" type="button">
+<div class="explorer-icon">🌐</div>
+<strong>Internet</strong>
+<small>MuneNet</small>
+</button>
+
+<button class="explorer-item" data-explorer-window="games" type="button">
+<div class="explorer-icon">🕹️</div>
+<strong>Games</strong>
+<small>javascript</small>
+</button>
+
+<button class="explorer-item" data-explorer-window="music" type="button">
+<div class="explorer-icon">🎵</div>
+<strong>Music</strong>
+<small>playlist</small>
+</button>
+
+<button class="explorer-item" data-explorer-window="mail" type="button">
+<div class="explorer-icon">💌</div>
+<strong>Mail</strong>
+<small>contact</small>
+</button>
+</div>
+</section>
+</div>
+</div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="app-window explorer-window documents-window hidden" id="window-documents" data-title="Documents">
+<header class="titlebar">
+<span>📁 Documents</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="explorer">
+<div class="explorer-toolbar">
+<button id="documentsBack" type="button">←</button>
+<button id="documentsUp" type="button">↑</button>
+<div class="explorer-address">C:\Users\Mune\Documents\</div>
+</div>
+
+<div class="explorer-content">
+<aside class="explorer-sidebar">
+<div class="sidebar-title">Places</div>
+<button class="explorer-place" id="documentsComputer" type="button">🖥️ My Computer</button>
+<button class="explorer-place active" type="button">📁 Documents</button>
+</aside>
+
+<section class="explorer-main">
+<div class="explorer-heading">
+<div>
+<h2>Documents</h2>
+<p>Your saved MunePad files.</p>
+</div>
+<span id="documentsCount">0 items</span>
+</div>
+
+<div class="explorer-grid" id="documentsFileGrid"></div>
+</section>
+</div>
+</div>
+</section>
+
+<!-- BROWSER -->
+<section class="app-window browser-window hidden" id="window-browser" data-title="MuneNet">
+<header class="titlebar">
+<span>🌐 MuneNet Explorer</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="browser-toolbar">
+<button id="backButton" class="browser-control" type="button">◀</button>
+<button id="forwardButton" class="browser-control" type="button">▶</button>
+<button id="refreshButton" class="browser-control" type="button">↻</button>
+
+<div class="browser-address">
+<span>Address:</span>
+<input id="addressInput" value="http://munenet.local/" autocomplete="off">
+</div>
+
+<button id="goButton" class="go-button" type="button">Go</button>
+</div>
+
+<div class="browser-search-bar">
+<span>🔎</span>
+<input id="searchInput" type="search" placeholder="Search MuneNet..." autocomplete="off">
+<button id="searchButton" type="button">Search</button>
+</div>
+
+<div class="browser-content" id="browserContent"></div>
+</section>
+
+<!-- NOTEPAD -->
+<section class="app-window hidden" id="window-notepad" data-title="MunePad">
+<header class="titlebar">
+<span id="notepadTitle">📝 MunePad — Untitled</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="notepad-app">
+<div class="notepad-menu">
+<button id="newNoteButton" type="button">New</button>
+<button id="saveNoteButton" type="button">Save</button>
+<button id="downloadNoteButton" type="button">Download</button>
+</div>
+
+<textarea id="noteEditor" placeholder="Start typing your notes here..."></textarea>
+
+<div class="notepad-status">
+<span id="noteStatus">Ready ♡</span>
+<span id="noteCount">0 characters</span>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="app-window hidden" id="window-about" data-title="About Mune">
+<header class="titlebar">
+<span>🎀 About Mune.exe</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="window-body about">
+<div class="avatar">♡</div>
+<div>
+<h2>Hi! I'm Mune ♡</h2>
+<p>Welcome to my retro little computer.</p>
+<p>This space is going to become my personal blog, portfolio and digital scrapbook.</p>
+<p class="pink">SYSTEM STATUS: online ✦</p>
+</div>
+</div>
+</section>
+
+<!-- MUSIC -->
+<section class="app-window small hidden" id="window-music" data-title="Music">
+<header class="titlebar">
+<span>🎵 MunePlayer</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="window-body music">
+<div class="album">♪</div>
+<h3>MY LITTLE PLAYLIST</h3>
+<p>01 — your favourite song</p>
+<p>02 — another favourite</p>
+<p>03 — late night coding</p>
+<div class="player-buttons">◀　▶　▶</div>
+</div>
+</section>
+
+<!-- GAMES -->
+<section class="app-window small hidden" id="window-games" data-title="Games">
+<header class="titlebar">
+<span>🕹️ Games</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="window-body games">
+<h2>GAME ROOM</h2>
+<p>♡ tiny games coming soon ♡</p>
+<button class="retro-button" type="button">START GAME</button>
+</div>
+</section>
+
+<!-- MAIL -->
+<section class="app-window small hidden" id="window-mail" data-title="Mail">
+<header class="titlebar">
+<span>💌 MuneMail</span>
+<div class="window-controls">
+<button class="minimize" type="button">_</button>
+<button class="close" type="button">×</button>
+</div>
+</header>
+
+<div class="window-body mail">
+<h2>You've got mail! ♡</h2>
+<p>Eventually visitors will be able to leave a message here.</p>
+<textarea placeholder="Write a message..."></textarea>
+<button class="retro-button" type="button">SEND</button>
+</div>
+</section>
+
+<footer class="taskbar">
+<button class="start-button" id="startButton" type="button">♡ START</button>
+<div class="task-buttons" id="taskButtons"></div>
+<div class="system-tray">
+<span>🔊</span>
+<span>🌸</span>
+<span id="clock">12:00 PM</span>
+</div>
+</footer>
+
+<div class="start-menu hidden" id="startMenu">
+<div class="start-banner">MUNE<br><span>OS</span></div>
+<div class="start-items">
+<button data-window="computer" type="button">🖥️ My Computer</button>
+<button data-window="browser" type="button">🌐 MuneNet</button>
+<button data-window="notepad" type="button">📝 MunePad</button>
+<button data-window="about" type="button">🎀 About Mune</button>
+<button data-window="music" type="button">🎵 Music</button>
+<button data-window="games" type="button">🕹️ Games</button>
+</div>
+<div class="shutdown" id="shutdownButton">♡ Shut Down</div>
+</div>
+
+<div class="shutdown-screen hidden" id="shutdownScreen">
+<div class="shutdown-box">
+<div class="shutdown-logo">MUNE<span>OS</span></div>
+<div class="shutdown-message" id="shutdownMessage">Shutting down...</div>
+<div class="shutdown-progress">
+<div class="shutdown-progress-bar" id="shutdownProgressBar"></div>
+</div>
+<div class="shutdown-small">Please wait...</div>
+</div>
+</div>
 
 </main>
 
-
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
-
-<!-- Website/content data -->
 <script src="content/pages.js"></script>
-
-<!-- Search -->
 <script src="js/search.js"></script>
-
-<!-- Browser -->
 <script src="js/browser.js"></script>
-
-<!-- Virtual filesystem -->
 <script src="js/filesystem.js"></script>
-
-<!-- Notepad -->
 <script src="js/notepad.js"></script>
-
-<!-- File Explorer -->
 <script src="js/explorer.js"></script>
-
-<!-- Window / OS controls -->
 <script src="js/os.js"></script>
-
-<!-- Main MUNE OS -->
 <script src="js/main.js"></script>
-
-
 </body>
-
 </html>

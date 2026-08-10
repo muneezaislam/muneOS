@@ -1,217 +1,294 @@
-/* MY COMPUTER */
+/* =========================
+   MUNEPAD
+========================= */
 
-.address-bar{
-border:2px inset #aaa;
-background:white;
-padding:3px 7px;
-}
+.notepad-app {
+    display: flex;
+    flex-direction: column;
 
-.explorer h2{
-margin:12px 0;
-color:#775d89;
-}
+    height: 100%;
+    min-height: 0;
 
-.file-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:14px;
-}
-
-.file{
-min-height:95px;
-border:1px solid #a58da8;
-background:#fff7ec;
-color:var(--dark);
-padding:12px;
-text-align:center;
-box-shadow:2px 2px #c1b5c6;
-}
-
-.file:hover{
-background:#fce2ed;
-}
-
-.file b,
-.file small{
-display:block;
-}
-
-.file b{
-margin-top:7px;
-}
-
-.file small{
-color:#92758f;
+    background: #fffafc;
 }
 
 
-/* NOTEPAD */
+.notepad-menu {
+    display: flex;
 
-.notepad{
-background:#f4eacb;
-padding:20px;
-}
+    gap: 6px;
 
-.paper{
-min-height:100%;
-padding:25px;
-background:#fffdf3;
-border-left:3px solid #e3a4b6;
-line-height:1.25;
-}
+    padding: 8px;
 
-.paper p:first-child{
-font-family:"Press Start 2P",monospace;
-font-size:13px;
-color:#a65b86;
-}
-.notepad-app{
-height:calc(100% - 30px);
-display:flex;
-flex-direction:column;
-background:#f4eacb;
-}
+    background: #f1d8ec;
 
-.notepad-menu{
-height:36px;
-display:flex;
-align-items:center;
-gap:4px;
-padding:4px 6px;
-background:#d8d1d8;
-border-bottom:2px solid #aaa1aa;
-}
-
-.notepad-menu button{
-padding:3px 12px;
-border:2px outset white;
-background:#eee8ef;
-color:#44384b;
-}
-
-.notepad-menu button:active{
-border-style:inset;
-}
-
-#noteEditor{
-flex:1;
-width:100%;
-min-height:0;
-resize:none;
-border:0;
-outline:none;
-padding:18px;
-background:#fffdf3;
-color:#44384b;
-font-family:"VT323",monospace;
-font-size:20px;
-line-height:1.35;
-}
-
-.notepad-status{
-height:25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:2px 8px;
-background:#ddd5df;
-border-top:1px solid #aaa1aa;
-font-size:16px;
+    border-bottom: 1px solid #c99ac2;
 }
 
 
-/* ABOUT */
+.notepad-menu button {
+    padding: 6px 14px;
 
-.about{
-display:flex;
-gap:25px;
-align-items:center;
-background:#f7e8f0;
-}
+    border: 1px solid #a878a1;
 
-.avatar{
-min-width:130px;
-height:160px;
-display:grid;
-place-items:center;
-font-size:65px;
-color:#bd6f99;
-background:linear-gradient(
-135deg,
-#f6c5d8,
-#bca7d7
-);
-border:3px ridge #8b718f;
-}
+    background: #fff;
 
-.pink{
-color:#bc5d91;
+    color: #4a3046;
+
+    cursor: pointer;
+
+    font-size: 13px;
 }
 
 
-/* MUSIC */
-
-.music{
-text-align:center;
-}
-
-.album{
-width:120px;
-height:120px;
-margin:5px auto 15px;
-display:grid;
-place-items:center;
-background:linear-gradient(
-135deg,
-#e7a8c2,
-#a797cf
-);
-border:4px ridge #8d7a92;
-font-size:60px;
-}
-
-.player-buttons{
-margin:20px;
-color:#9d5d88;
+.notepad-menu button:hover {
+    background: #ead0e6;
 }
 
 
-/* GAMES */
+#noteEditor {
+    flex: 1;
 
-.games{
-text-align:center;
+    width: 100%;
+
+    min-height: 250px;
+
+    box-sizing: border-box;
+
+    resize: none;
+
+    border: none;
+
+    outline: none;
+
+    padding: 18px;
+
+    background: #fffdfd;
+
+    color: #3d2939;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    line-height: 1.6;
 }
 
 
-/* MAIL */
+.notepad-status {
+    display: flex;
 
-.mail{
-text-align:center;
+    justify-content: space-between;
+
+    padding: 6px 10px;
+
+    background: #f1d8ec;
+
+    border-top: 1px solid #c99ac2;
+
+    color: #684d64;
+
+    font-size: 11px;
 }
 
-.mail textarea{
-width:90%;
-height:100px;
-margin:10px;
-padding:8px;
-border:2px inset #aaa;
-resize:none;
+
+/* =========================
+   SAVE AS WINDOW
+========================= */
+
+.save-dialog {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 9999;
+
+    background:
+        rgba(35, 20, 35, 0.28);
 }
 
 
-/* SHARED APP BUTTON */
-
-.retro-button{
-border:2px outset #eee;
-background:#e8c1d4;
-padding:6px 16px;
-color:#543e54;
+.save-dialog.hidden {
+    display: none;
 }
 
-.retro-button:hover{
-background:#dcb6ce;
+
+.save-dialog-box {
+    width: 380px;
+
+    max-width: calc(100vw - 40px);
+
+    background: #fff8fc;
+
+    border: 2px solid #8f5b87;
+
+    box-shadow:
+        6px 6px 0
+        rgba(70, 30, 70, 0.22);
 }
 
-.retro-button:active{
-border-style:inset;
+
+.save-dialog-title {
+    padding: 8px 12px;
+
+    background: #d9a6d0;
+
+    border-bottom: 1px solid #8f5b87;
+
+    color: #43233e;
+
+    font-size: 14px;
+
+    font-weight: bold;
 }
+
+
+.save-dialog-body {
+    padding: 18px;
+}
+
+
+.save-dialog-body label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #43233e;
+
+    font-size: 13px;
+}
+
+
+#saveFileName {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px 9px;
+
+    border: 1px solid #9d7598;
+
+    background: #ffffff;
+
+    color: #382936;
+
+    outline: none;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 13px;
+}
+
+
+#saveFileName:focus {
+    border-color: #b56eae;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(181, 110, 174, 0.18);
+}
+
+
+.save-dialog-message {
+    margin-top: 12px;
+
+    padding: 9px;
+
+    background: #f6e6f3;
+
+    border: 1px solid #d5b0cf;
+
+    color: #563b52;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.save-dialog-message.hidden {
+    display: none;
+}
+
+
+.save-dialog-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    margin-top: 18px;
+}
+
+
+.save-dialog-buttons button {
+    padding: 7px 16px;
+
+    border: 1px solid #8f5b87;
+
+    background: #ffffff;
+
+    color: #43233e;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+
+.save-dialog-buttons button:hover {
+    background: #ead0e6;
+}
+
+
+#confirmSaveButton {
+    background: #d9a6d0;
+
+    font-weight: bold;
+}
+
+
+#confirmSaveButton:hover {
+    background: #c88abc;
+}
+
+
+#overwriteSaveButton {
+    background: #d9a6d0;
+
+    font-weight: bold;
+}
+
+
+#overwriteSaveButton:hover {
+    background: #c88abc;
+}
+
+
+.save-dialog-buttons button.hidden {
+    display: none;
+}
+.save-dialog-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(35,20,35,.28)}
+.save-dialog{width:380px;max-width:calc(100vw - 40px);background:#fff8fc;border:2px solid #8f5b87;box-shadow:6px 6px rgba(70,30,70,.22);padding:0}
+.save-dialog-title{padding:8px 12px;background:#d9a6d0;border-bottom:1px solid #8f5b87;color:#43233e;font-size:14px;font-weight:bold}
+.save-dialog-text{padding:16px 18px 8px;color:#563b52;font-size:12px}
+.save-dialog-label{display:block;margin:8px 18px 6px;color:#43233e;font-size:13px}
+.save-dialog-input{display:block;width:calc(100% - 36px);margin:0 18px;box-sizing:border-box;padding:8px 9px;border:1px solid #9d7598;background:#fff;color:#382936;outline:none;font-size:13px}
+.save-dialog-input:focus{border-color:#b56eae;box-shadow:0 0 0 2px rgba(181,110,174,.18)}
+.save-dialog-location{margin:12px 18px;padding:9px;background:#f6e6f3;border:1px solid #d5b0cf;color:#563b52;font-size:12px}
+.save-dialog-buttons{display:flex;justify-content:flex-end;gap:7px;margin:0 18px 18px}
+.save-dialog-buttons button{padding:7px 16px;border:1px solid #8f5b87;background:#fff;color:#43233e;cursor:pointer;font-size:12px}
+.save-dialog-buttons button:hover{background:#ead0e6}
+#saveDialogSave{background:#d9a6d0;font-weight:bold}
+#saveDialogSave:hover{background:#c88abc}
