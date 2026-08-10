@@ -1,294 +1,306 @@
 /* =========================
-   MUNEPAD
-========================= */
+   MUNE OS APPS
+   ========================= */
 
-.notepad-app {
-    display: flex;
-    flex-direction: column;
-
-    height: 100%;
-    min-height: 0;
-
-    background: #fffafc;
+.notepad-app{
+display:flex;
+flex-direction:column;
+width:100%;
+height:calc(100% - 30px);
+min-height:0;
+background:#fffafc;
 }
 
-
-.notepad-menu {
-    display: flex;
-
-    gap: 6px;
-
-    padding: 8px;
-
-    background: #f1d8ec;
-
-    border-bottom: 1px solid #c99ac2;
+.notepad-menu{
+display:flex;
+align-items:center;
+gap:6px;
+flex:0 0 auto;
+padding:8px;
+background:#f1d8ec;
+border-bottom:1px solid #c99ac2;
 }
 
-
-.notepad-menu button {
-    padding: 6px 14px;
-
-    border: 1px solid #a878a1;
-
-    background: #fff;
-
-    color: #4a3046;
-
-    cursor: pointer;
-
-    font-size: 13px;
+.notepad-menu button{
+padding:6px 14px;
+border:1px solid #a878a1;
+background:#fff;
+color:#4a3046;
+cursor:pointer;
+font-size:13px;
 }
 
-
-.notepad-menu button:hover {
-    background: #ead0e6;
+.notepad-menu button:hover{
+background:#ead0e6;
 }
 
-
-#noteEditor {
-    flex: 1;
-
-    width: 100%;
-
-    min-height: 250px;
-
-    box-sizing: border-box;
-
-    resize: none;
-
-    border: none;
-
-    outline: none;
-
-    padding: 18px;
-
-    background: #fffdfd;
-
-    color: #3d2939;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 14px;
-
-    line-height: 1.6;
+#noteEditor{
+display:block;
+flex:1 1 auto;
+width:100%;
+height:auto;
+min-height:0;
+box-sizing:border-box;
+resize:none;
+border:0;
+outline:none;
+padding:18px;
+background:#fffdfd;
+color:#3d2939;
+font-family:"Courier New",monospace;
+font-size:14px;
+line-height:1.6;
 }
 
-
-.notepad-status {
-    display: flex;
-
-    justify-content: space-between;
-
-    padding: 6px 10px;
-
-    background: #f1d8ec;
-
-    border-top: 1px solid #c99ac2;
-
-    color: #684d64;
-
-    font-size: 11px;
+#noteEditor::placeholder{
+color:#a28b9b;
+opacity:1;
 }
 
+.notepad-status{
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex:0 0 auto;
+height:28px;
+box-sizing:border-box;
+padding:6px 10px;
+background:#f1d8ec;
+border-top:1px solid #c99ac2;
+color:#684d64;
+font-size:11px;
+}
 
 /* =========================
-   SAVE AS WINDOW
-========================= */
+   ABOUT
+   ========================= */
 
-.save-dialog {
-    position: fixed;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    z-index: 9999;
-
-    background:
-        rgba(35, 20, 35, 0.28);
+.about{
+display:flex;
+gap:20px;
+align-items:center;
 }
 
-
-.save-dialog.hidden {
-    display: none;
+.about .avatar{
+width:90px;
+height:90px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:2px solid #c99ac2;
+border-radius:50%;
+background:#f1d8ec;
+color:#a878a1;
+font-size:42px;
 }
 
-
-.save-dialog-box {
-    width: 380px;
-
-    max-width: calc(100vw - 40px);
-
-    background: #fff8fc;
-
-    border: 2px solid #8f5b87;
-
-    box-shadow:
-        6px 6px 0
-        rgba(70, 30, 70, 0.22);
+.about h2{
+margin-top:0;
+color:#67465f;
 }
 
-
-.save-dialog-title {
-    padding: 8px 12px;
-
-    background: #d9a6d0;
-
-    border-bottom: 1px solid #8f5b87;
-
-    color: #43233e;
-
-    font-size: 14px;
-
-    font-weight: bold;
+.pink{
+color:#c96f9d;
+font-weight:bold;
 }
 
+/* =========================
+   MUSIC
+   ========================= */
 
-.save-dialog-body {
-    padding: 18px;
+.music{
+text-align:center;
 }
 
-
-.save-dialog-body label {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #43233e;
-
-    font-size: 13px;
+.music .album{
+width:110px;
+height:110px;
+margin:15px auto;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#e9a8c0;
+border:2px solid #a878a1;
+color:white;
+font-size:55px;
 }
 
-
-#saveFileName {
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 8px 9px;
-
-    border: 1px solid #9d7598;
-
-    background: #ffffff;
-
-    color: #382936;
-
-    outline: none;
-
-    font-family:
-        Arial,
-        sans-serif;
-
-    font-size: 13px;
+.music h3{
+color:#67465f;
 }
 
-
-#saveFileName:focus {
-    border-color: #b56eae;
-
-    box-shadow:
-        0 0 0 2px
-        rgba(181, 110, 174, 0.18);
+.player-buttons{
+margin-top:25px;
+font-size:22px;
+color:#765d7d;
 }
 
+/* =========================
+   GAMES
+   ========================= */
 
-.save-dialog-message {
-    margin-top: 12px;
-
-    padding: 9px;
-
-    background: #f6e6f3;
-
-    border: 1px solid #d5b0cf;
-
-    color: #563b52;
-
-    font-size: 12px;
-
-    line-height: 1.5;
+.games{
+text-align:center;
+padding:35px;
 }
 
-
-.save-dialog-message.hidden {
-    display: none;
+.games h2{
+color:#765d7d;
 }
 
-
-.save-dialog-buttons {
-    display: flex;
-
-    justify-content: flex-end;
-
-    gap: 7px;
-
-    margin-top: 18px;
+.retro-button{
+padding:8px 18px;
+border:1px solid #a878a1;
+background:#f1d8ec;
+color:#4a3046;
+cursor:pointer;
 }
 
-
-.save-dialog-buttons button {
-    padding: 7px 16px;
-
-    border: 1px solid #8f5b87;
-
-    background: #ffffff;
-
-    color: #43233e;
-
-    cursor: pointer;
-
-    font-size: 12px;
+.retro-button:hover{
+background:#ead0e6;
 }
 
+/* =========================
+   MAIL
+   ========================= */
 
-.save-dialog-buttons button:hover {
-    background: #ead0e6;
+.mail{
+padding:20px;
 }
 
-
-#confirmSaveButton {
-    background: #d9a6d0;
-
-    font-weight: bold;
+.mail h2{
+color:#765d7d;
 }
 
-
-#confirmSaveButton:hover {
-    background: #c88abc;
+.mail textarea{
+display:block;
+width:100%;
+height:160px;
+box-sizing:border-box;
+margin:15px 0;
+padding:10px;
+border:1px solid #c99ac2;
+background:#fffdfd;
+color:#493443;
+resize:none;
+outline:none;
 }
 
+/* =========================
+   SAVE AS DIALOG
+   ========================= */
 
-#overwriteSaveButton {
-    background: #d9a6d0;
-
-    font-weight: bold;
+.save-dialog-overlay{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(35,20,35,.32);
+backdrop-filter:blur(3px);
+z-index:99999;
 }
 
-
-#overwriteSaveButton:hover {
-    background: #c88abc;
+.save-dialog{
+position:relative;
+inset:auto;
+width:390px;
+max-width:calc(100vw - 40px);
+background:#fffafd;
+border:1px solid #cba9bd;
+border-radius:12px;
+box-shadow:0 18px 45px rgba(55,25,45,.28);
+overflow:hidden;
+font-family:Arial,sans-serif;
 }
 
-
-.save-dialog-buttons button.hidden {
-    display: none;
+.save-dialog-title{
+padding:12px 16px;
+background:#ead0e2;
+border-bottom:1px solid #d0afc2;
+color:#493443;
+font-size:14px;
+font-weight:bold;
 }
-.save-dialog-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(35,20,35,.28)}
-.save-dialog{width:380px;max-width:calc(100vw - 40px);background:#fff8fc;border:2px solid #8f5b87;box-shadow:6px 6px rgba(70,30,70,.22);padding:0}
-.save-dialog-title{padding:8px 12px;background:#d9a6d0;border-bottom:1px solid #8f5b87;color:#43233e;font-size:14px;font-weight:bold}
-.save-dialog-text{padding:16px 18px 8px;color:#563b52;font-size:12px}
-.save-dialog-label{display:block;margin:8px 18px 6px;color:#43233e;font-size:13px}
-.save-dialog-input{display:block;width:calc(100% - 36px);margin:0 18px;box-sizing:border-box;padding:8px 9px;border:1px solid #9d7598;background:#fff;color:#382936;outline:none;font-size:13px}
-.save-dialog-input:focus{border-color:#b56eae;box-shadow:0 0 0 2px rgba(181,110,174,.18)}
-.save-dialog-location{margin:12px 18px;padding:9px;background:#f6e6f3;border:1px solid #d5b0cf;color:#563b52;font-size:12px}
-.save-dialog-buttons{display:flex;justify-content:flex-end;gap:7px;margin:0 18px 18px}
-.save-dialog-buttons button{padding:7px 16px;border:1px solid #8f5b87;background:#fff;color:#43233e;cursor:pointer;font-size:12px}
-.save-dialog-buttons button:hover{background:#ead0e6}
-#saveDialogSave{background:#d9a6d0;font-weight:bold}
-#saveDialogSave:hover{background:#c88abc}
+
+.save-dialog-text{
+padding:16px 18px 8px;
+color:#735d6b;
+font-size:12px;
+}
+
+.save-dialog-label{
+display:block;
+margin:4px 18px 6px;
+color:#594351;
+font-size:12px;
+font-weight:bold;
+}
+
+.save-dialog-input{
+display:block;
+box-sizing:border-box;
+width:calc(100% - 36px);
+height:34px;
+margin:0 18px;
+padding:7px 9px;
+border:1px solid #cbaabb;
+border-radius:6px;
+background:#fff;
+color:#493443;
+font-family:Arial,sans-serif;
+font-size:13px;
+outline:none;
+}
+
+.save-dialog-input:focus{
+border-color:#c47fa4;
+box-shadow:0 0 0 3px rgba(196,127,164,.15);
+}
+
+.save-dialog-location{
+margin:13px 18px 2px;
+padding:9px 10px;
+background:#f8edf3;
+border:1px solid #e5d0db;
+border-radius:6px;
+color:#725b69;
+font-size:12px;
+}
+
+.save-dialog-buttons{
+display:flex;
+justify-content:flex-end;
+gap:8px;
+padding:14px 18px;
+margin-top:14px;
+background:#fcf7fa;
+border-top:1px solid #ead8e1;
+}
+
+.save-dialog-buttons button{
+min-width:72px;
+height:30px;
+padding:0 13px;
+border:1px solid #cbaabb;
+border-radius:6px;
+background:#fff;
+color:#594351;
+font-size:12px;
+cursor:pointer;
+}
+
+.save-dialog-buttons button:hover{
+background:#f5e3ed;
+}
+
+.save-dialog-buttons button:last-child{
+background:#d58eae;
+border-color:#c57b9d;
+color:#fff;
+font-weight:bold;
+}
+
+.save-dialog-buttons button:last-child:hover{
+background:#c77c9f;
+}
