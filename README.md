@@ -37,3 +37,12 @@ Potential future improvements include expanding the available functionality, ref
 **Languages:** HTML, CSS, JavaScript
 
 ## Screenshots
+
+### Main Interface
+![muneOS main interface](images/main-interface.png)
+
+### MuneNet Browser
+![MuneNet browser](images/search-bar.png)
+
+### Notepad and Documents
+![muneOS notepad and documents](images/notepad-document.png)
