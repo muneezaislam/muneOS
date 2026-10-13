@@ -35,3 +35,5 @@ Potential future improvements include expanding the available functionality, ref
 ## Technologies and Project Access
 
 **Languages:** HTML, CSS, JavaScript
+
+## Screenshots
